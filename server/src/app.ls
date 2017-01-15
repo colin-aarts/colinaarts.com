@@ -25,13 +25,13 @@ keystone.init do
 
 	'auto update': yes
 
-	'mongo': (fs.read-file-sync (path.resolve __dirname, '../../secure/.mlab'), 'utf-8').trim!
+	'mongo': process.env.MONGODB_URI
 
 	'session': yes
 	'session store': 'mongo'
 	'auth': yes
 	'user model': 'User'
-	'cookie secret': fs.read-file-sync (path.resolve __dirname, '../../secure/.cookiesecret'), 'utf-8'
+	'cookie secret': process.env.cookiesecret
 	'logger': '[:date[web]] :method :url :status (:response-time ms)'
 	'compress': no
 
@@ -40,7 +40,7 @@ keystone.init do
 	'ssl cert': path.resolve __dirname, '../../secure/cert.pem'
 
 	## Cloudinary
-	'cloudinary config': fs.read-file-sync (path.resolve __dirname, '../../secure/.cloudinary'), 'utf-8'
+	'cloudinary config': process.env.CLOUDINARY_URI
 	'cloudinary folders': yes
 	'cloudinary secure': yes
 
