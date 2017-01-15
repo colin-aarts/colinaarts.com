@@ -31,7 +31,7 @@ keystone.init do
 	'session store': 'mongo'
 	'auth': yes
 	'user model': 'User'
-	'cookie secret': process.env.cookiesecret
+	'cookie secret': process.env.COOKIESECRET
 	'logger': '[:date[web]] :method :url :status (:response-time ms)'
 	'compress': no
 
