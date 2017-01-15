@@ -1,0 +1,10 @@
+// No idea why we need to repeat this, but it doesn't work consistently if we don't…
+@import '../../../node_modules/font-awesome-stylus/stylus/variables'
+
+/*
+** Font Awesome
+*/
+
+fa(name)
+	content: lookup('$fa-var-' + name)
+	font-family: FontAwesome

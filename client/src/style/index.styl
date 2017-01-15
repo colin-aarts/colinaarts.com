@@ -1,0 +1,141 @@
+@import '~style/config'
+@import '~style/typography'
+@import '~style/icons'
+@import '~style/text'
+@import '~style/code'
+@import '~style/animations'
+
+
+/*
+** Global element styles
+*/
+
+*, *:before, *:after
+	transition: all 0.25s, font-size 1ms
+	box-sizing: border-box
+
+html
+	overflow-y: scroll
+	font-family: Delicious
+	font-size: 1.1rem
+	color: colors.text
+	line-height: 2
+	background: url(assets + '/img/body-bg.png')
+	text-shadow: 0 1px hsla(white, 0.5)
+	transition: none
+
+body
+	margin: 0
+	padding: 0
+
+abbr[title]
+	text-decoration: none
+	border-bottom: 1px dotted
+	cursor: help
+
+
+/*
+** Headings
+*/
+
+{headings}
+	font-family: Garamond
+	font-style: italic
+	font-weight: 500
+	line-height: 1.2
+	color: darken(colors.accent-2, 50%)
+
+{sections}
+	{headings}
+		font-size: 3rem
+	{sections}
+		{headings}
+			font-size: 2.2rem
+		{sections}
+			{headings}
+				font-size: 1.8rem
+
+
+/*
+** Global link style
+*/
+
+a
+	&[href]
+		text-decoration: none
+		border-bottom: 1px solid
+		color: colors.link
+
+		&:visited
+			color: inherit
+
+		{interact}
+			border-bottom-color: transparent
+
+	// Links that are marked as wrapping an object (media; image, video, etc.). This is done automatically with some JS.
+	// Purpose: to hide the standard border-bottom underline style, until we finally have :has()/subject indicator.
+	&.wraps-object
+		border: 0
+
+	// Mark external links
+	&[rel="external"]
+		&:after
+			ext-link()
+
+
+/*
+** Global loading state
+*/
+
+[aria-busy='true']
+	position: relative
+
+	&:after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		background: url(assets + '/img/throbber.svg') no-repeat center
+		opacity: 0.5
+
+
+/*
+** Global init animation
+*/
+
+[data-initialising]
+	transform: scale(0)
+
+
+/*
+** Global text selection style
+*/
+
+::-moz-selection
+	background-color: colors.accent-2
+	color: #eee
+	text-shadow: none
+
+::selection
+	background-color: colors.accent-2
+	color: #eee
+	text-shadow: none
+
+
+/*
+** Global :target highlighting style
+*/
+
+:target
+	animation: 3s target-highlight
+
+
+
+/*
+** Global accessible content element style
+*/
+
+.accessible-content
+	sr-only()

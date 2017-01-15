@@ -1,0 +1,163 @@
+@import '~style/config'
+@import '~style/icons'
+@import '~style/misc'
+
+/*
+** Helper to prevent column breaks
+*/
+
+no-break()
+	display: inline-block // Easier way to prevent breaking in columns
+	width: 100%           // … just in case we have really little content
+
+
+/*
+** Base building block; establishes a centered full-width box; requires a (single) child element to be present
+*/
+
+fullwidth-box()
+	display: flex
+	justify-content: center
+
+	> *
+		flex: 1
+		max-width: page-max-width
+		padding: 2rem 4rem
+
+
+/*
+** Basic building block; err yeah probably can remove this one now but w/e
+*/
+
+page-box()
+	fullwidth-box: true
+	flex: 1
+	/*background: linear-gradient(to bottom, hsla(colors.accent-1, 0.5), hsla(darken(colors.accent-1, 12.5%), 0.5))
+	box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.333)
+	border: solid hsla(0, 0%, 100%, 0.333)
+	border-width: 1px 0
+	transition: none*/
+
+
+/*
+** Easy peasy lemon squeezy centering
+*/
+
+dead-centre(abs = false)
+	display: flex
+	align-items: center
+	justify-content: center
+
+	if abs
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+
+
+/*
+** Flexbox dummy; apply to flexbox dummy elements appended to flex containers for faking a grid-like layout.
+*/
+
+flexbox-dummy()
+	margin-top: 0
+	margin-bottom: 0
+	visibility: hidden
+	height: 0
+
+
+/*
+** "Note" box
+*/
+
+note-box()
+	background: hsla(colors.accent-2, 0.25)
+	padding: 1rem
+
+	{headings}
+		margin-top: 0
+		font-size: 1.6em
+
+	:last-child
+		margin-bottom: 0
+
+
+/*
+** Figure box
+*/
+
+figure-box()
+	margin: 0
+
+	&:not(.testcase)
+		padding: 1rem
+		display: flex
+		flex-direction: column
+		text-align: center
+		align-items: center
+		background: hsla(black, 0.333)
+		color: #eee
+
+		figcaption
+			margin-top: 1rem
+			font-size: 0.9em
+			line-height: 1.4
+
+	&.testcase
+		no-break: true
+
+
+/*
+** Link back
+*/
+
+link-back()
+	position: absolute // Maybe split this out of the mixin
+	z-index: 1
+	width: 2em
+	height: 2em
+	background: hsla(white, 0.75)
+	display: flex
+	justify-content: center
+	align-items: center
+	border-radius: 50%
+	border: 0
+	box-shadow: 1px 1px 0 hsla(black, 0.25)
+	color: inherit
+
+	&:visited
+		color: inherit
+
+	{interact}
+		background-color: hsla(colors.accent-3, 0.75)
+		color: #eee
+
+	&:before
+		fa(arrow-left)
+
+	> .accessible-content
+		sr-only()
+
+
+/*
+** Section anchors
+*/
+
+section-anchor()
+	border: 0
+	font-size: 0.6em
+	line-height: 1
+	position: absolute
+	display: flex
+	align-items: center
+	justify-content: center
+	right: 0
+	top: 0.3em
+	width: 1.5em
+	height: 1.5em
+	color: inherit
+	background: white
+	border-radius: 50%
+	opacity: 0
+	box-shadow: 0 0 0 hsla(black, 0.25)

@@ -1,0 +1,11 @@
+section data-slug=data.item.slug data-initialising=!data.initialised style='background-image:url(${data.item.image.listing})' w-bind='./index.ls'
+	a href=data.item.href data-capture-link
+		header
+			figure.logo if(data.item.logo.exists)
+				img src=data.item.logo.thumb alt='Project logo' sizes='200px'
+			h1 - ${data.item.title}
+			p.dates - ${data.item.timespan}
+			p.meta - ${data.item.type}
+		main - $!{data.item.content.brief}
+		footer
+			tag-list tags=data.item.tags links=false

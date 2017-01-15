@@ -1,0 +1,34 @@
+@import '~style/layout'
+
+:local(.prefix)
+	background-size: 120% auto
+	background-position: center
+	position: relative
+	border: 1px solid hsla(black, 0.1)
+
+	&[data-w-onclick]
+		cursor: pointer
+
+		{interact}
+			background-size: 140% auto
+
+			> span
+				opacity: 0
+
+	> span
+		dead-centre(abs: true)
+		color: #eee
+		font-size: 1.3em
+		font-weight: bold
+		text-shadow: none
+		margin: 0.5rem
+		padding: 2rem
+		text-align: center
+		line-height: 1.4
+		background: hsla(black, 0.5)
+
+
+// Disable transitions for the gallery dialog, awkward results.
+#gallery-dialog
+	*, *:before, *:after
+		transition: none

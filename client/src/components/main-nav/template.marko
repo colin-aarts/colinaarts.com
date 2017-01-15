@@ -1,0 +1,11 @@
+var items=[
+	{ text: 'Home'    , href: '/' },
+	{ text: 'Articles', href: '/articles' },
+	{ text: 'Work'    , href: '/projects' },
+]
+
+nav w-bind='./index.ls'
+	ul
+		for(item in items)
+			li class={ active: data.active === item.href }
+				a data-capture-link href=item.href - ${item.text}

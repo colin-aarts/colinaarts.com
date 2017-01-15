@@ -1,0 +1,34 @@
+div w-bind='./index.ls'
+	header
+		div
+			a data-capture-link href='/' class='logo'
+				img src='/img/logo.png' alt='colinaarts.com'
+
+			main-nav
+
+	main w-id='main' w-preserve
+
+	<!-- Yeah. Temporary, until support for proper CSS masking lands in Fx. -->
+	<svg height="0">
+		<defs>
+			<mask id="mask-fade-bottom" maskContentUnits="objectBoundingBox">
+				<linearGradient id="g1" x2="0" y2="1">
+					<stop stop-color="white" stop-opacity="1" offset="0.4"/>
+					<stop stop-color="white" stop-opacity="0" offset="1"/>
+				</linearGradient>
+				<rect width="1" height="1" fill="url(#g1)"/>
+			</mask>
+		</defs>
+	</svg>
+	<!-- end SVG fail -->
+
+	footer
+		div
+			p - Made with
+				for(item in data.madeWith | separator=', ')
+					a href=item.href rel='external' - ${item.name}
+				- , and ♥
+			p - Typography: Garamond Italic and
+				a href='http://www.exljbris.com/delicious.html' rel='external' - Delicious
+			p - External links are marked with
+				span.external-link - &#xf08e;

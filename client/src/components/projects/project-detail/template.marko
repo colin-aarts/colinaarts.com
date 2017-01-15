@@ -1,0 +1,68 @@
+div aria-busy=data.busy.toString() data-initialising=!data.initialised w-bind='./index.ls'
+	div
+		if(!data.busy)
+
+			<!-- Content -->
+			if(data.project && !data.error)
+				a.link-back data-capture-link title="Back to project listing" href=data.linkBack
+					span.accessible-content - Back to project listing
+				div.backdrop role='presentation' style='background-image:url(${data.project.image.fullwidth});mask:url(#mask-fade-bottom)'
+				article
+					header
+						figure.logo if(data.project.logo.exists)
+							img src=data.project.logo.thumb alt='Project logo' sizes='201px'
+
+						h1 - ${data.project.title}
+
+						p.dates - ${data.project.timespan}
+						p.links
+							a.permalink data-capture-link href=data.permalink - Permalink
+
+						div.meta class={'has-gallery':data.project.images.length}
+							ul.misc
+								li
+									span.label
+										- Live/demo:
+									if(data.project.demo)
+										if(/https?|irc/.test(data.project.demo))
+											a href=data.project.demo rel='external' - ${data.u.strTruncate(data.project.demo, 19, 12, '…')}
+										else
+											- ${data.project.demo}
+									else - Not (publicly) available
+								li
+									span.label
+										- Repository:
+									if(data.project.repository)
+										a href=data.project.repository rel='external' - ${data.u.strTruncate(data.project.repository, 19, 12, '…')}
+									else - Not (publicly) available
+								if(data.project.links.length)
+									li
+										span.label - Other links:
+										for(link in data.project.links_ | separator=', ')
+											a href=link.href rel='external' - ${link.desc}
+
+							tag-list tags=data.project.tags
+							gallery if(data.project.images.length) images=data.project.images poster=data.project.image
+
+					main
+						div.content
+							p.lede
+								b - $!{data.project.content.brief}
+							- $!{data.project.content.extended}
+
+						section.legal if(data.project.ipNotice)
+							h1 - Legal notice
+							p
+								small - Any imagery depicted or trade names mentioned regarding <i>${data.project.legalName || data.project.title}</i> are the property of the respective rights holders and are used here in good faith, for illustrative purposes; to be considered <i>fair use</i>.
+
+			<!-- Error state -->
+			else-if(data.error)
+				p - Noooooooo, something went wrong ☹
+				p
+					button w-onclick='fetchPost' - Try again
+
+			<!-- No content state -->
+			else-if(!data.project)
+				p - It doesn't look like there's anything here ☹
+				p
+					button w-onclick='fetchPost' - Try again

@@ -1,0 +1,58 @@
+@import '~style/config'
+@import '~style/text'
+@import '~style/layout'
+
+:local(.prefix)
+	min-height: 100vh
+	display: flex
+	flex-direction: column
+	overflow: hidden
+
+	> header
+		fullwidth-box: true
+
+		:root[data-active-section='/'] &
+			margin-top: 4rem
+
+
+		> div
+			padding-bottom: 0
+
+		.logo
+			margin: 0 3rem 1rem -3px
+			max-width: 100%
+			display: inline-block
+			float: left
+
+			:root[data-active-section='/'] &
+				float: none
+
+			> img
+				vertical-align: bottom
+
+		nav
+			float: right
+
+			:root[data-active-section='/'] &
+				float: none
+
+	> main
+		flex: 1
+		display: flex
+		flex-direction: column
+		background: hsla(colors.accent-1, 0.333)
+		box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.333)
+		border: solid hsla(0, 0%, 100%, 0.333)
+		border-width: 1px 0
+		transition: none
+
+	> footer
+		fullwidth-box: true
+		font-size: 0.85rem
+
+		p
+			margin: 0
+
+		.external-link
+			ext-link()
+			margin: 0

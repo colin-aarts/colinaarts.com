@@ -1,0 +1,45 @@
+/*
+** Paths
+*/
+
+assets = '~assets'
+
+
+/*
+** Selector shortcuts
+*/
+
+interact = '&:hover, &:focus'
+headings = 'h1, h2, h3, h4, h5, h6'
+sections = 'section, article, aside, nav'
+
+
+/*
+** Layout
+*/
+
+page-max-width = 80rem
+
+
+/*
+** Colours
+*/
+
+// Base colours dict, only use to compose abstract colours
+base-colors = {
+	beige   : #cba
+	blue    : #abc
+	darkgrey: #333
+	pink    : hotpink
+	red     : hsl(0, 75%, 40%)
+}
+
+// Abstract colours hash
+colors = {
+	accent-1: base-colors.beige
+	accent-2: base-colors.blue
+	accent-3: base-colors.pink
+	text    : base-colors.darkgrey
+	link    : darken(base-colors.beige, 50%)
+	error   : base-colors.red
+}

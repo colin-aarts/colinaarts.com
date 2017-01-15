@@ -1,0 +1,29 @@
+<!-- File version -->
+<svg xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<mask id="fade-bottom" maskContentUnits="objectBoundingBox">
+			<linearGradient id="g1" x2="0" y2="1">
+				<stop stop-color="white" stop-opacity="1" offset="0.4"/>
+				<stop stop-color="white" stop-opacity="0" offset="1"/>
+			</linearGradient>
+			<rect width="1" height="1" fill="url(#g1)"/>
+		</mask>
+	</defs>
+</svg>
+
+
+
+<!-- Inline/HTML version -->
+<!-- Yeah. Temporary, until support for proper CSS masking lands in Fx. -->
+<svg height="0">
+	<defs>
+		<mask id="mask-fade-bottom" maskContentUnits="objectBoundingBox">
+			<linearGradient id="g1" x2="0" y2="1">
+				<stop stop-color="white" stop-opacity="1" offset="0.4"/>
+				<stop stop-color="white" stop-opacity="0" offset="1"/>
+			</linearGradient>
+			<rect width="1" height="1" fill="url(#g1)"/>
+		</mask>
+	</defs>
+</svg>
+<!-- end SVG fail -->

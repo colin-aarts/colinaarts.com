@@ -1,0 +1,64 @@
+@import '~style/config'
+
+:local(.prefix)
+	display: flex
+	background-size: 130% auto
+	background-position: center
+	background-color: hsla(black, 0.5) // fallback
+	box-shadow: inset 0 0 15px hsla(0, 0%, 0%, 0.25)
+
+	> a
+		flex: 1
+		display: flex
+		flex-direction: column
+		margin: 2rem 0.5rem 0.5rem
+		padding: 1rem
+		background-color: hsla(white, 0.95)
+		box-shadow: 0 0 3px hsla(black, 0.25)
+		border: 0
+		color: colors.text
+
+		{interact}
+			background-color: transparent
+			box-shadow: none
+
+			h1
+				color: #eee
+				text-shadow: 1px 1px 0 hsla(black, 0.75)
+
+			:not(header):not(h1):not(.logo):not(img)
+				opacity: 0
+
+		> header
+			> .logo
+				float: right
+				margin: 0 0 0 2rem
+
+				> img
+					max-width: 6rem
+					max-height: 3rem
+
+			> h1
+				margin: 0
+				line-height: 1
+
+			> .dates
+				display: inline-block
+
+			> .meta
+				display: inline-block
+
+			> p
+				margin-top: 0
+				color: lighten(colors.text, 33.333%)
+
+				+ p
+					margin-left: 1ex
+
+					&:before
+						content: '•'
+						margin-right: 1ex
+
+		> main
+			margin: auto 0 0
+			line-height: 1.4

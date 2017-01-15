@@ -1,0 +1,28 @@
+section aria-busy=data.busy.toString() w-bind='./index.ls'
+	div
+		if(!data.busy)
+
+			<!-- Error state -->
+			if(data.error)
+				p - Noooooooo, something went wrong ☹
+				p
+					button w-onclick='fetchTags' - Try again
+
+			<!-- No content state -->
+			else-if(data.tags && !data.tags.length)
+				p - It doesn't look like there's anything here yet ☹
+				p
+					button w-onclick='fetchTags' - Try again
+
+			<!-- Content -->
+			else
+				main
+					section.contact
+						p - Have a freelance gig or employment opportunity you'd like to discuss with me?
+						ul
+							li.contact-email
+								a href='mailto:hello@colinaarts.com' - <span class="accessible-content">Email: hello@colinaarts.com</span>
+							li.contact-skype
+								a href='skype:colin.aarts?add' - <span class="accessible-content">Skype: colin.aarts</span>
+							li.contact-linkedin
+								a href='https://linkedin.com/in/colin-aarts-81250b4a' - <span class="accessible-content">LinkedIn</span>

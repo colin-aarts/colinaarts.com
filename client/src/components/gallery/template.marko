@@ -1,0 +1,7 @@
+if(data.images && data.images.length)
+	span.gallery-trigger role='button' w-bind='./index.ls' w-onclick='showGallery' style='background-image:url(${data.poster.thumb})'
+		span - Image gallery
+
+else
+	span.gallery-trigger role='button' w-bind='./index.ls'
+		span - No images yet ☹

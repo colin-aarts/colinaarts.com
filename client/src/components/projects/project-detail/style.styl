@@ -1,0 +1,168 @@
+@import '~style/config'
+@import '~style/layout'
+@import '~style/text'
+@import '~style/icons'
+
+:local(.prefix)
+	page-box()
+	position: relative
+
+	> *
+		.link-back
+			link-back()
+
+		> .backdrop
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			height: 30rem
+			background-repeat: no-repeat
+			background-size: 110% auto
+			background-position: center
+			-webkit-mask-image: linear-gradient(to bottom, black 40%, transparent)
+			// mask: url(#mask-fade-bottom) // Do in style attribute
+
+		> article
+			margin-top: 20rem
+			position: relative
+			z-index: 1
+
+			> header
+				> .logo
+					float: right
+					margin: 1rem 0 0
+
+					> img
+						max-height: 4rem
+						max-width: 10rem
+
+				> h1
+					display: inline-block
+					margin: 0 0 2rem -0.5ex
+					padding: 0.25ex 1ex 0.25ex 0.5ex
+					color: #eee
+					text-shadow: 1px 1px 0 hsla(black, 0.5)
+					background-color: hsla(black, 0.333)
+
+				> .dates
+					color: lighten(colors.text, 25%)
+					font-weight: bold
+
+				> .links
+					> *
+						border: 0
+						margin-right: 1ex
+
+						{interact}
+							color: inherit
+
+						&:before
+							font-size: 0.8em
+							margin-right: 1ex
+
+					.permalink
+						&:before
+							fa(link)
+
+					.backdrop-original
+						&:before
+							fa(image)
+
+				> .meta
+					display: flex
+					margin: 0 -1rem -1rem
+					align-items: flex-end
+
+					&.has-gallery
+						margin-top: -4rem
+
+					> *
+						flex: 1 1 auto
+						list-style: none
+						margin: 1rem
+
+					> .misc
+						.label
+							display: inline-block
+							min-width: 12ex
+							font-style: italic
+
+					> .tag-list
+						flex: 0 1 14em
+						justify-content: flex-end
+
+					> .gallery-trigger
+						flex: 0 0 auto
+						height: 10rem
+						width: 10rem
+
+				ul
+					padding: 0
+
+				p
+					margin: 0
+					line-height: 1.4
+
+			> main
+				.content
+					margin-top: 3rem
+					-webkit-columns: 22rem
+					-moz-columns: 22rem
+					columns: 22rem
+					-webkit-column-gap: 5rem
+					-moz-column-gap: 5rem
+					column-gap: 5rem
+
+					> {sections}
+						&:first-child
+							{headings}
+								margin-top: 0
+
+				> *
+					{headings}
+						position: relative
+
+						{interact}
+							.section-anchor
+								opacity: 1
+
+						.section-anchor
+							section-anchor()
+
+				.legal
+					margin-top: 4rem
+					line-height: 1.4
+					color: lighten(colors.text, 33.333%)
+					max-width: 22rem
+					border-top: 1px solid hsla(black, 0.1)
+
+					h1
+						font-family: inherit
+						font-weight: bold
+						font-size: 0.8rem
+						text-transform: uppercase
+						letter-spacing: 0.1em
+						margin-bottom: 0
+
+					p
+						margin: 0
+
+				.note
+					note-box()
+
+				figure
+					figure-box()
+
+				ol, ul
+					padding: 0
+
+				dl
+					dt
+						font-style: italic
+
+				.footnote-ref
+					border: 0
+
+					&:after
+						fa(chevron-up)

@@ -1,0 +1,7 @@
+section data-initialising=!data.initialised style='background-image:url(${data.item.image.listing})' w-bind='./index.ls'
+	a href=data.item.href data-capture-link
+		header
+			h1 - ${data.item.title}
+			p.dates
+				time datetime=data.item.publishedAt - ${data.item.publishedAtFmt}
+		main - $!{data.item.content.brief}

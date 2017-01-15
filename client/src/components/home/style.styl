@@ -1,0 +1,31 @@
+@import '~style/layout'
+@import '~style/icons'
+
+:local(.prefix)
+	page-box: true
+
+	.contact
+		ul
+			margin: -0.5rem
+			padding: 0
+			list-style: none
+			display: flex
+
+			> li
+				margin: 0.5rem
+
+				> a
+					border: 0
+					font-size: 2rem
+
+					{interact}
+						color: colors.accent-3
+
+			.contact-email > a:before
+				fa(envelope)
+
+			.contact-skype > a:before
+				fa(skype)
+
+			.contact-linkedin > a:before
+				fa(linkedin-square)

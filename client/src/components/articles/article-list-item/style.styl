@@ -1,0 +1,43 @@
+@import '~style/config'
+
+:local(.prefix)
+	display: flex
+	background-size: cover
+	background-position: center
+	box-shadow: inset 0 0 15px hsla(0, 0%, 0%, 0.25)
+
+	> a
+		flex: 1
+		display: flex
+		flex-direction: column
+		margin: 2rem 0.5rem 0.5rem
+		padding: 1rem
+		background-color: hsla(white, 0.95)
+		box-shadow: 0 0 3px hsla(black, 0.25)
+		border: 0
+		color: colors.text
+
+		{interact}
+			background-color: transparent
+			box-shadow: none
+
+			h1
+				color: #eee
+				text-shadow: 1px 1px 0 hsla(black, 0.75)
+
+			.dates,
+			main
+				opacity: 0
+
+		header
+			h1
+				margin: 0
+				line-height: 1
+
+			.dates
+				margin-top: 0
+				color: lighten(colors.text, 33.333%)
+
+		main
+			margin: auto 0 0
+			line-height: 1.4

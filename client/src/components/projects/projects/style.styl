@@ -1,0 +1,43 @@
+@import '~style/layout'
+
+:local(.prefix)
+	page-box(true)
+
+	> *
+		> header
+			text-align: center
+			margin: 0
+			overflow: hidden
+
+			> p
+				display: inline-block
+				position: relative
+
+				&:before, &:after
+					content: ''
+					position: absolute
+					top: 1em
+					width: 9999px
+					height: 1px
+					background-color: hsla(black, 0.15)
+
+				&:before
+					right: calc(100% + 1em)
+				&:after
+					left: calc(100% + 1em)
+
+		> main
+			display: flex
+			flex-wrap: wrap
+			// margin: -1rem
+
+			> *
+				margin: 0.5px
+				flex: 1 1 20rem
+
+				&[role='presentation']
+					flexbox-dummy: true
+
+				// Dirty override
+				// &[data-slug="nike-player-management"]
+					// flex-basis: 40rem
