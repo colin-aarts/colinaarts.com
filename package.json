@@ -17,7 +17,7 @@
     "keystone": "^4.0.0-beta.2",
     "marko": "^3.10.1",
     "marko-widgets": "^6.3.4",
-    "navigo": "^3.0.0",
+    "navigo": "^4.0.0",
     "normalizr": "^2.2.1",
     "photoswipe": "^4.1.1",
     "prismjs": "^1.5.1",

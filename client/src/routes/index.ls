@@ -1,4 +1,4 @@
-require! 'navigo'
+require! 'Navigo'
 require! 'url'
 require! 'dom'
 
@@ -6,22 +6,23 @@ require! './handlers'
 
 
 ## Init router
-const router = new navigo "#{location.protocol}//#{location.hostname}:#{location.port}"
+const router = new Navigo "#{location.protocol}//#{location.hostname}:#{location.port}"
+# const router = new Navigo
 
 
 ## Define routes
+router.on handle-route 'home'
 router.on do
-	'/articles'      : as: 'articles', uses: handle-route 'articles'
-	'/articles/:slug': as: 'article' , uses: handle-route 'article'
-	'/projects'      : as: 'projects', uses: handle-route 'projects'
-	'/projects/:slug': as: 'project' , uses: handle-route 'project'
-	'/'              : as: 'home'    , uses: handle-route 'home'
+	'articles'      : as: 'articles', uses: handle-route 'articles'
+	'articles/:slug': as: 'article' , uses: handle-route 'article'
+	'projects'      : as: 'projects', uses: handle-route 'projects'
+	'projects/:slug': as: 'project' , uses: handle-route 'project'
 
 
 ## Navigo doesn't support middleware, but we can work around that for this relatively simple project by wrapping the route handlers in a single global 'middleware'
 function handle-route route
 	->
-		return if is-fragment-change!
+		# return if is-fragment-change!
 		dom.set-title off
 		handlers[route] ...
 
