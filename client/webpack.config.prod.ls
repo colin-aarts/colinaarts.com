@@ -7,7 +7,7 @@ module.exports =
 		app: path.resolve __dirname, 'src/app.ls'
 	output:
 		path       : path.resolve __dirname, '../server/dist/public/'
-		public-path: '/'
+		public-path: 'https://colinaarts-com.herokuapp.com/'
 		filename   : '[name].js'
 	module:
 		loaders:
