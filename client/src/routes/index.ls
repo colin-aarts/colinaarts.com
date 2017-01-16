@@ -6,8 +6,7 @@ require! './handlers'
 
 
 ## Init router
-const router = new Navigo "#{location.protocol}//#{location.hostname}:#{location.port}"
-# const router = new Navigo
+const router = new Navigo
 
 
 ## Define routes
