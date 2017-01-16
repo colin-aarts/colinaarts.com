@@ -9,6 +9,13 @@ require! 'path'
 require! 'fs'
 
 
+## Import development environment variables
+if process.env.NODE_ENV isnt 'production'
+	process.env.MONGODB_URI    = (fs.read-file-sync (path.resolve __dirname, '../../secure/.mlab'), 'utf-8').trim!
+	process.env.COOKIESECRET   = (fs.read-file-sync (path.resolve __dirname, '../../secure/.cookiesecret'), 'utf-8').trim!
+	process.env.CLOUDINARY_URI = (fs.read-file-sync (path.resolve __dirname, '../../secure/.cloudinary'), 'utf-8').trim!
+
+
 ## Set up fecha
 fecha.masks.long = 'dddd D MMMM, YYYY'
 
@@ -44,6 +51,8 @@ keystone.init do
 	'cloudinary folders': yes
 	'cloudinary secure': yes
 
+
+##
 require './models'
 
 keystone.set 'routes', require './routes'

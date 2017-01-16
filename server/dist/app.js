@@ -8,6 +8,11 @@
   fecha = require('fecha');
   path = require('path');
   fs = require('fs');
+  if (process.env.NODE_ENV !== 'production') {
+    process.env.MONGODB_URI = fs.readFileSync(path.resolve(__dirname, '../../secure/.mlab'), 'utf-8').trim();
+    process.env.COOKIESECRET = fs.readFileSync(path.resolve(__dirname, '../../secure/.cookiesecret'), 'utf-8').trim();
+    process.env.CLOUDINARY_URI = fs.readFileSync(path.resolve(__dirname, '../../secure/.cloudinary'), 'utf-8').trim();
+  }
   fecha.masks.long = 'dddd D MMMM, YYYY';
   keystone.init({
     'name': 'colinaarts.com',
