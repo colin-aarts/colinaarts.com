@@ -7,7 +7,7 @@ module.exports =
 		app: path.resolve __dirname, 'src/app.ls'
 	output:
 		path       : path.resolve __dirname, '../server/dist/public/'
-		public-path: 'https://localhost:8080/'
+		# public-path: 'https://localhost:8080/'
 		filename   : '[name].js'
 	module:
 		loaders:
@@ -17,8 +17,8 @@ module.exports =
 			* test: /\.styl|css$/, loader: 'style?sourceMap!css?sourceMap!stylus?sourceMap'
 			* test: /\.json$/    , loader: 'json'
 			* test: /\.(ttf|otf|eot|svg|png|jpe?g|gif|woff2?)/, loader: 'file'
-	plugins:
-		new webpack.HotModuleReplacementPlugin!
+	# plugins:
+		# new webpack.HotModuleReplacementPlugin!
 	resolve:
 		extensions: <[ .ls .js .marko .styl .css ]> ++ ''
 		root      : path.resolve __dirname, 'src'
