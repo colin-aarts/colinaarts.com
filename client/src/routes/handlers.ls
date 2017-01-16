@@ -1,7 +1,3 @@
-## Error handlers
-function handle404 path
-	console.log '404 ' + path
-
 ## Route handlers
 module.exports =
 
@@ -10,20 +6,15 @@ module.exports =
 	*/
 
 	'home': (params) ->
-		# Seems navigo.not-found is broken, unmatched paths end up here. Work-around…
-		const path = location.pathname
-		if path.split '/' .1 is ''
-			const component   = require 'components/home'
-			const store       = component::redux-store
-			const mount-point = document.get-element-by-id store.get-state!main-content.mount-point-id
-			component
-				.render!
-				.replace-children-of mount-point
+		const component   = require 'components/home'
+		const store       = component::redux-store
+		const mount-point = document.get-element-by-id store.get-state!main-content.mount-point-id
+		component
+			.render!
+			.replace-children-of mount-point
 
-			## Store active section
-			component::redux-actions['app.active-section.set'] '/'
-
-		else handle404 path
+		## Store active section
+		component::redux-actions['app.active-section.set'] '/'
 
 
 	/*
