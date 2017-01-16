@@ -1,6 +1,7 @@
 ## App-specific
 
 secure
+*.marko.js
 
 
 
