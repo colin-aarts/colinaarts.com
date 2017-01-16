@@ -2,8 +2,9 @@
   "name": "colinaarts.com",
   "version": "0.0.1",
   "description": "",
-  "main": "",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Colin Aarts <hello@colinaarts.com> (https://colinaarts.com)",
