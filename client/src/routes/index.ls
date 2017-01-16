@@ -11,11 +11,11 @@ const router = new navigo "#{location.protocol}//#{location.hostname}:#{location
 
 ## Define routes
 router.on do
-	'/'              : as: 'home'    , uses: handle-route 'home'
-	'/articles'      : as: 'articles', uses: handle-route 'articles'
-	'/articles/:slug': as: 'article' , uses: handle-route 'article'
-	'/projects'      : as: 'projects', uses: handle-route 'projects'
-	'/projects/:slug': as: 'project' , uses: handle-route 'project'
+	'/'             : as: 'home'    , uses: handle-route 'home'
+	'articles'      : as: 'articles', uses: handle-route 'articles'
+	'articles/:slug': as: 'article' , uses: handle-route 'article'
+	'projects'      : as: 'projects', uses: handle-route 'projects'
+	'projects/:slug': as: 'project' , uses: handle-route 'project'
 
 
 ## Navigo doesn't support middleware, but we can work around that for this relatively simple project by wrapping the route handlers in a single global 'middleware'
