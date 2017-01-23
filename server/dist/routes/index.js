@@ -32,9 +32,24 @@
         ** Article listing
         */
         articles: function(req, res, next){
-          var Post;
+          var Post, query, ids, objectIds;
           Post = keystone.list('Post');
-          return Post.model.find().where('state', 'published').where('type', 'article').populate('author', '-password').sort('-publishedAt').exec(function(error, posts){
+          query = Post.model;
+          ids = req.query.ids;
+          if (ids) {
+            ids = [].concat(ids);
+            objectIds = ids.map(function(it){
+              return keystone.mongoose.Types.ObjectId(it);
+            });
+            query = query.find({
+              _id: {
+                $in: ids
+              }
+            });
+          } else {
+            query = query.find();
+          }
+          return query.where('state', 'published').where('type', 'article').populate('author', '-password').sort('-publishedAt').exec(function(error, posts){
             if (error) {
               return res.send({
                 error: error
@@ -79,9 +94,24 @@
         ** Project listing
         */,
         projects: function(req, res, next){
-          var Project;
+          var Project, query, ids, objectIds;
           Project = keystone.list('Project');
-          return Project.model.find().where('state', 'published').populate('tags').sort('-publishedAt').exec(function(error, projects){
+          query = Project.model;
+          ids = req.query.ids;
+          if (ids) {
+            ids = [].concat(ids);
+            objectIds = ids.map(function(it){
+              return keystone.mongoose.Types.ObjectId(it);
+            });
+            query = query.find({
+              _id: {
+                $in: ids
+              }
+            });
+          } else {
+            query = query.find();
+          }
+          return query.find().where('state', 'published').populate('tags').sort('-publishedAt').exec(function(error, projects){
             if (error) {
               return res.send({
                 error: error

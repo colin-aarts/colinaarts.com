@@ -1,9 +1,10 @@
 @import '~style/config'
+@import '~style/icons'
 
 :local(.prefix)
 	ul
 		padding: 0
-		margin: 1rem 0 0 0
+		margin: 1rem -1rem 0 0
 		list-style: none
 		display: flex
 		justify-content: flex-end
@@ -39,3 +40,7 @@
 
 				{interact}
 					background: hsla(colors.accent-2, 0.5)
+
+			&.github > a:before
+				fa(github)
+				font-style: normal

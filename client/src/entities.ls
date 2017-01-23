@@ -24,7 +24,7 @@ function f entity, params, config, cb
 		else throw new Error 'Bad HTTP status code.'
 
 	function handle-data res
-		set-timeout (-> cb res), 0 # Emulate some latency on api fetches for. TODO: remove
+		cb res
 		# result = normalize it, articles: array-of schemas.article
 
 

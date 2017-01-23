@@ -1,6 +1,5 @@
 require! 'marko-widgets'
 require! 'entities'
-require! 'dom'
 
 require! './style'
 require! './template'
@@ -14,11 +13,13 @@ module.exports = marko-widgets.define-component do
 		articles: state.articles
 		error   : state.error
 		busy    : state.busy
+		ids     : state.ids
 
 	get-initial-state: (input, out) ->
 		articles: input.articles
 		error   : no
 		busy    : no
+		ids     : input.ids
 
 
 	init: ->
@@ -27,9 +28,6 @@ module.exports = marko-widgets.define-component do
 
 		## Attach style sheet identifier
 		el.class-list.add style.prefix
-
-		## Update document title
-		dom.set-title 'Articles'
 
 		## Fetch articles
 		this.fetch-posts!
@@ -54,7 +52,7 @@ module.exports = marko-widgets.define-component do
 		const api-config = this.redux-store.get-state!.app.api
 
 		## Fetch data
-		res <~ entities.fetch 'posts', {}, api-config
+		res <~ entities.fetch 'posts', ids: this.state.ids, api-config
 
 		this.set-state busy: no
 

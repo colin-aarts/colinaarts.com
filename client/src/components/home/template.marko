@@ -1,28 +1,33 @@
-section aria-busy=data.busy.toString() w-bind='./index.ls'
+section w-bind='./index.ls'
 	div
-		if(!data.busy)
+		main
+			div.content
+				<!-- section.about
+					h1 - About me
+					p - Yooooooooo -->
 
-			<!-- Error state -->
-			if(data.error)
-				p - Noooooooo, something went wrong ☹
-				p
-					button w-onclick='fetchTags' - Try again
+				section.contact
+					h1 - Get in touch
+					p - Have a freelance gig or employment opportunity you'd like to discuss with me? Drop me a line:
+					ul
+						li.contact-email
+							a href='mailto:hello@colinaarts.com' - <span class="accessible-content">Email: hello@colinaarts.com</span>
+						li.contact-linkedin
+							a href='https://linkedin.com/in/colin-aarts-81250b4a' - <span class="accessible-content">LinkedIn</span>
+						li.contact-skype
+							a href='skype:colin.aarts?add' - <span class="accessible-content">Skype: colin.aarts</span>
 
-			<!-- No content state -->
-			else-if(data.tags && !data.tags.length)
-				p - It doesn't look like there's anything here yet ☹
-				p
-					button w-onclick='fetchTags' - Try again
+			div.featured
+				section.featured-article
+					header
+						h1 - Featured article
+						div
+							a data-capture-link href=data.articlesLink - see all
+					article-list ids=['580528bf45d036d540f56e56']
 
-			<!-- Content -->
-			else
-				main
-					section.contact
-						p - Have a freelance gig or employment opportunity you'd like to discuss with me?
-						ul
-							li.contact-email
-								a href='mailto:hello@colinaarts.com' - <span class="accessible-content">Email: hello@colinaarts.com</span>
-							li.contact-skype
-								a href='skype:colin.aarts?add' - <span class="accessible-content">Skype: colin.aarts</span>
-							li.contact-linkedin
-								a href='https://linkedin.com/in/colin-aarts-81250b4a' - <span class="accessible-content">LinkedIn</span>
+				section.featured-project
+					header
+						h1 - Featured project
+						div
+							a data-capture-link href=data.projectsLink - see all
+					project-list ids=['5808056cf807a83836005950']

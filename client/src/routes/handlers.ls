@@ -22,7 +22,7 @@ module.exports =
 	*/
 
 	'articles': (params) ->
-		const component   = require 'components/articles/articles'
+		const component   = require 'components/layouts/articles'
 		const store       = component::redux-store
 		const mount-point = document.get-element-by-id store.get-state!main-content.mount-point-id
 		component
@@ -54,7 +54,7 @@ module.exports =
 	*/
 
 	'projects': (params) ->
-		const component   = require 'components/projects/projects'
+		const component   = require 'components/layouts/projects'
 		const store       = component::redux-store
 		const mount-point = document.get-element-by-id store.get-state!main-content.mount-point-id
 		component

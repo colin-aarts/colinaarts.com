@@ -37,9 +37,20 @@ routes =
 			*/
 
 			articles: (req, res, next) ->
-				const Post = keystone.list 'Post'
-				Post.model
-					.find!
+				const Post  = keystone.list 'Post'
+
+				query = Post.model
+				ids   = req.query.ids
+
+				if ids
+					ids = [].concat ids
+					const object-ids = ids.map ->
+						keystone.mongoose.Types.ObjectId it
+					query = query.find _id: $in: ids
+				else
+					query = query.find!
+
+				query
 					.where 'state', 'published'
 					.where 'type', 'article'
 					.populate 'author', '-password'
@@ -75,7 +86,19 @@ routes =
 
 			projects: (req, res, next) ->
 				const Project = keystone.list 'Project'
-				Project.model
+
+				query = Project.model
+				ids   = req.query.ids
+
+				if ids
+					ids = [].concat ids
+					const object-ids = ids.map ->
+						keystone.mongoose.Types.ObjectId it
+					query = query.find _id: $in: ids
+				else
+					query = query.find!
+
+				query
 					.find!
 					.where 'state', 'published'
 					.populate 'tags'

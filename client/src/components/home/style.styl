@@ -1,31 +1,61 @@
+@import '~style/config'
 @import '~style/layout'
 @import '~style/icons'
 
 :local(.prefix)
 	page-box: true
 
-	.contact
-		ul
-			margin: -0.5rem
-			padding: 0
-			list-style: none
+	> *
+		> main
 			display: flex
+			margin: -2rem
 
-			> li
-				margin: 0.5rem
+			> *
+				flex: 1 1 50%
+				margin: 2rem
 
-				> a
-					border: 0
-					font-size: 2rem
+			> .content
+				> :first-child
+					> h1
+						margin-top: 0
 
-					{interact}
-						color: colors.accent-3
+				> .contact
+					> ul
+						margin: -0.5rem
+						padding: 0
+						list-style: none
+						display: flex
 
-			.contact-email > a:before
-				fa(envelope)
+						> li
+							margin: 0.5rem
 
-			.contact-skype > a:before
-				fa(skype)
+							> a
+								border: 0
+								font-size: 2rem
 
-			.contact-linkedin > a:before
-				fa(linkedin-square)
+								{interact}
+									color: colors.accent-3
+
+						.contact-email > a:before
+							fa(envelope)
+
+						.contact-skype > a:before
+							fa(skype)
+
+						.contact-linkedin > a:before
+							fa(linkedin-square)
+
+			> .featured
+				> section
+					margin: 0 0 1rem
+
+					> header
+						display: flex
+
+						> h1
+							flex: 1
+							margin: 0 0 0.5rem 0
+							font-family: font-base
+							font-size: 1.2rem
+							font-style: normal
+							font-weight: normal

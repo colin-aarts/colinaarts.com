@@ -1,0 +1,17 @@
+@import '~style/layout'
+
+:local(.prefix)
+	page-box(true)
+
+	> *
+		> main
+			> *
+				display: flex
+				flex-wrap: wrap
+
+				> *
+					margin: 0.5px
+					flex: 1 1 20rem
+
+					&[role='presentation']
+						flexbox-dummy: true
